@@ -1,13 +1,15 @@
 
-<?php include 'index.php' ?>
+<?php include 'base.php' ?>
 <html>
 <body>
 
 <?php 
- //"Study " . $_GET['subject'] . " at " . $_GET['web'];
+ 
 
-$gr_url = "http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%22imei%22%3A%2212312323123123%22%7D&method=countryCode";
+$gr_url ="http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%22imei%22%3A%2212312323123123%22%7D&method=countryCode";
 $response = file_get_contents($gr_url);
+
+
 
 echo "</br>";
 $result = json_decode($response);
@@ -16,5 +18,8 @@ foreach($result as $data) {
 }
 ?>
 
+
+
+    
 </body>
 </html>
