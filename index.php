@@ -1,3 +1,13 @@
+<!--
+/*
+ * Copyright (c) 2015 AppLab, Grameen Foundation
+ *
+ *  Facebook MVP 
+ *  
+ *  
+ **/
+-->
+  
 
 <?php include 'base.php' ?>
 
@@ -24,7 +34,7 @@ ul#menu li a {
 }
 
 ul#menu li a:hover {
-    background-color: orange;
+    background-color: #3333ff;
 }
 </style>
 </head>

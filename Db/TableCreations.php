@@ -1,3 +1,13 @@
+<!--
+/*
+ * Copyright (c) 2015 AppLab, Grameen Foundation
+ *
+ *  Facebook MVP 
+ *  
+ *  
+ **/
+-->
+
 <?php
 include 'connection.php';
 $query1=('create table if not exists menu(id char(16) primary key,lable text not null)');

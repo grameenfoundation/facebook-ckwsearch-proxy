@@ -1,3 +1,13 @@
+<!--
+/*
+ * Copyright (c) 2015 AppLab, Grameen Foundation
+ *
+ *  Facebook MVP 
+ *  
+ *  
+ **/
+-->
+  Copyright (c) 2015 Grameen Foundation
 
 <?php require_once 'phpti-0.9/ti.php' ?>
 
