@@ -15,21 +15,21 @@ include '../../Db/connection.php';
 
 if($connection){
    
-    //select a0r70000000TiIzA  Animals
-        $Animalsquery=("select * from menu_Item where parent_id='a0r70000000TiIzA' order by label asc");
-        $AnimalsResult = mysqli_query($connection,$Animalsquery)                
+    //select a0r70000000TQG4A West
+        $westquery=("select * from menu_Item where parent_id='a0r70000000TQG4A' order by label asc");
+        $westResult = mysqli_query($connection,$westquery)                
                 or die('Invalid query for selecting Animals ' . mysqli_error($connection));
         echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
-    while ($AnimalsObj = $AnimalsResult->fetch_object()) {
-        $AnimalsIDS=$AnimalsObj->id;
-        $AnimalsLabels=$AnimalsObj->label;
-        $AnimalsContent=$AnimalsObj->content;
+    while ($westObj = $westResult->fetch_object()) {
+        $westIDS=$westObj->id;
+        $westLabels=$westObj->label;
+        $westContent=$westObj->content;
          
-        printf ("%s \n", $AnimalsIDS);
+        printf ("%s \n", $westIDS);
         
-        $path='Animals';
+        $path='West';
         $ext='.php';
         
         $num =$num+1;
@@ -37,11 +37,10 @@ if($connection){
         $fullLink=$path.$str.$ext;
         
         echo ''."<ul id='menu'>";
-        echo ''."<li ><a href=$fullLink>$AnimalsLabels</a></li>";
-        echo ''."$AnimalsContent". "</ul> "; 
+        echo ''."<li ><a href=$fullLink>$westLabels</a></li>";
+        echo ''."$westContent". "</ul> "; 
             
     }
-    
     
 }  else {
     die('Error connecting to Db'.mysqli_error($connection));

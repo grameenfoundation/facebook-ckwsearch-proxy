@@ -3,20 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/Grameen/base.php</file>
-            <file>file:/C:/wamp/www/Grameen/testImages.php</file>
-            <file>file:/C:/wamp/www/Grameen/Db/test.php</file>
-            <file>file:/C:/wamp/www/Grameen/testCountryCode.php</file>
-            <file>file:/C:/wamp/www/Grameen/Db/downloadFarmers.php</file>
-            <file>file:/C:/wamp/www/Grameen/Db/TableCreations.php</file>
-            <file>file:/C:/wamp/www/Grameen/Db/connection.php</file>
-            <file>file:/C:/wamp/www/Grameen/testKeywords.php</file>
-            <file>file:/C:/wamp/www/Grameen/Views/MenuItems.php</file>
             <file>file:/C:/wamp/www/Grameen/testFarmers.php</file>
-            <file>file:/C:/wamp/www/Grameen/Db/DownloadKeywords.php</file>
-            <file>file:/C:/wamp/www/Grameen/Db/DownloadImageId.php</file>
-            <file>file:/C:/wamp/www/Grameen/MenuBuilder.php</file>
-            <file>file:/C:/wamp/www/Grameen/Db/UpdateKeywords.php</file>
+            <file>file:/C:/wamp/www/Grameen/testImages.php</file>
+            <file>file:/C:/wamp/www/Grameen/testCountryCode.php</file>
+            <file>file:/C:/wamp/www/Grameen/testKeywords.php</file>
             <file>file:/C:/wamp/www/Grameen/index.php</file>
         </group>
     </open-files>

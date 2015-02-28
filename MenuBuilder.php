@@ -21,15 +21,12 @@ $resultMenus = mysqli_query($connection,$getMenus);
 //getMenuIds
     if ($resultMenus) {
       // echo " Record selected successfully";
-       echo ''. "</br>";
+      
         /* fetch object array */
     while ($menuObj = $resultMenus->fetch_object()) {
-        $menuID=$menuObj->id;
-      //  printf ("%s and %s\n", $menuID, $menuObj->label);
-           
+        $menuID=$menuObj->id;         
     }
-       
-        
+              
     }  else {
         die('Invalid query for selecting menus: ' . mysqli_error($connection));    
     }
@@ -40,8 +37,8 @@ $resultMenus = mysqli_query($connection,$getMenus);
  //getMenuItemlabels whose parent ID is top
     
     if ($resultMenuItems) {
-       echo " Record selected successfully";
-       echo ''. "</br>";
+      // echo " Record selected successfully";
+       
         /* fetch object array */
        $num=0;
     while ($menuItemObj = $resultMenuItems->fetch_object()) {
@@ -61,19 +58,12 @@ $resultMenus = mysqli_query($connection,$getMenus);
         echo ''."<ul id='menu'>";
         echo ''."<li ><a href=$fullLink>$menuItemLabels</a></li>";
         echo ''."$menuItemContent". "</ul> "; 
-            
- 
+           
     }
-         
-        
+                 
     }  else {
         die('Invalid query for selecting menuItems: ' . mysqli_error($connection));    
-    }
-    echo ''. "</br>";
-    
-    
-    
-    
+    }   
     
 }  else {
     echo 'No connection to Db'; 
