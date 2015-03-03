@@ -10,9 +10,9 @@
 
 <?php
 include 'connection.php';
-$query1=('create table if not exists menu(id char(16) primary key,lable text not null)');
+$query1=('create table if not exists menu(id char(16) primary key,label text not null)');
 $query2=('create table if not exists menu_item(id char(16) primary key,label text not null,'
-        . 'menu_id char(16),parent_id char(16),position integer ,content text,attachment_id char(16), FOREIGN KEY(menu_id) REFERENCES menu (id) ON DELETE CASCADE ON UPDATE CASCADE,FOREIGN KEY(parent_id) REFERENCES menu_item (id) ON DELETE CASCADE ON UPDATE CASCADE)');
+        . 'menu_id char(16),parent_id char(16),position integer ,content text,attachment_id char(16), FOREIGN KEY(menu_id) REFERENCES menu (id) ON DELETE CASCADE ON UPDATE CASCADE)');
 
 //,FOREIGN KEY(parent_id) REFERENCES menu_item (id) ON DELETE CASCADE ON UPDATE CASCADE 
 $Imagequery=('create table if not exists image(id char(16) primary key)');

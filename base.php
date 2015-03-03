@@ -141,7 +141,7 @@ a:hover {
           <img class="logo" typeof="foaf:Image" src="grameen-foundation-logo-1.png"> 
           </div>  --> 
       
- <!-- 
+ 
   <div>
     <a href="/about">About Us |</a>
     <a href="/what-we-do" title=""> What We Do |</a><a href="/where-we-work"> Where We Work |</a><a href="/our-impact/personal-stories" title=""> Our Impact |</a><a href="/news-events/grameen-foundation-in-the-news" title=""> News &amp; Events |</a>
@@ -154,7 +154,7 @@ a:hover {
 <a href="Db/DownloadKeywords.php"> Download Keywords |</a>
 <a href="Db/DownloadImageId.php"> Download Image IDs |</a>
 
--->
+
 
   
   </div>
