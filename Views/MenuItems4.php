@@ -17,7 +17,8 @@ if($connection){
         $firstAidKitsquery=("select * from menu_Item where parent_id='a0r70000000UBk7A' order by label asc");
         $firstAidKitsResult = mysqli_query($connection,$firstAidKitsquery)                
                 or die('Invalid query for selecting First Aid Kits ,: ' . mysqli_error($connection));
-        echo " Record selected successfully";
+        //echo " Record selected successfully";
+        
         echo ''. "</br>";
            $num=0;
     while ($firstAidKitsObj = $firstAidKitsResult->fetch_object()) {
@@ -25,7 +26,12 @@ if($connection){
         $firstAidKitsLabels=$firstAidKitsObj->label;
         $firstAidKitsContent=$firstAidKitsObj->content;
          
-         printf ("%s \n", $firstAidKitsIDS);
+        
+        if (strpos($firstAidKitsContent,'No Content') !== false) {
+            $firstAidKitsContent='';
+        }
+        
+        // printf ("%s \n", $firstAidKitsIDS);
         
         $path='FirstAidKits/firstAidKits';
         $ext='.php';

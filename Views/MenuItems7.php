@@ -17,7 +17,7 @@ if($connection){
         $mobileMoneyDirectoryquery=("select * from menu_Item where parent_id='a0r70000000SuHlA' order by label asc");
         $mobileMoneyDirectoryResult = mysqli_query($connection,$mobileMoneyDirectoryquery)                
                 or die('Invalid query for selecting Market Information ,: ' . mysqli_error($connection));
-        echo " Record selected successfully";
+       // echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
     while ($mobileMoneyDirectoryObj = $mobileMoneyDirectoryResult->fetch_object()) {
@@ -25,7 +25,11 @@ if($connection){
         $mobileMoneyDirectoryLabels=$mobileMoneyDirectoryObj->label;
         $mobileMoneyDirectoryContent=$mobileMoneyDirectoryObj->content;
          
-         printf ("%s \n", $mobileMoneyDirectoryIDS);
+        
+        if (strpos($mobileMoneyDirectoryContent,'No Content') !== false) {
+            $mobileMoneyDirectoryContent='';
+        }
+        // printf ("%s \n", $mobileMoneyDirectoryIDS);
         
         $path='MobileMoneyDirectory/mobileMoneyDirectory';
         $ext='.php';

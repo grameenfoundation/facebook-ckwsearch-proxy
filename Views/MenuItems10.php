@@ -17,7 +17,7 @@ if($connection){
         $waterHarvestingquery=("select * from menu_Item where parent_id='a0r70000000T8eLA' order by label asc");
         $waterHarvestingResult = mysqli_query($connection,$waterHarvestingquery)                
                 or die('Invalid query for selecting Water Harvesting' . mysqli_error($connection));
-        echo " Record selected successfully";
+       // echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
     while ($waterHarvestingObj = $waterHarvestingResult->fetch_object()) {
@@ -25,7 +25,11 @@ if($connection){
         $waterHarvestingLabels=$waterHarvestingObj->label;
         $waterHarvestingContent=$waterHarvestingObj->content;
          
-         printf ("%s \n", $waterHarvestingIDS);
+        
+        if (strpos($waterHarvestingContent,'No Content') !== false) {
+            $waterHarvestingContent='';
+        }
+        // printf ("%s \n", $waterHarvestingIDS);
         
         $path='WaterHarvesting/waterHarvesting';
         $ext='.php';

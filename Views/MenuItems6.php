@@ -17,7 +17,7 @@ if($connection){
         $marketInformationquery=("select * from menu_Item where parent_id='a0r70000000Um3yA' order by label asc");
         $marketInformationResult = mysqli_query($connection,$marketInformationquery)                
                 or die('Invalid query for selecting Market Information ,: ' . mysqli_error($connection));
-        echo " Record selected successfully";
+        //echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
     while ($marketInformationObj = $marketInformationResult->fetch_object()) {
@@ -25,7 +25,11 @@ if($connection){
         $marketInformationLabels=$marketInformationObj->label;
         $marketInformationContent=$marketInformationObj->content;
          
-         printf ("%s \n", $marketInformationIDS);
+        
+        if (strpos($marketInformationContent,'No Content') !== false) {
+            $marketInformationContent='';
+        }
+        // printf ("%s \n", $marketInformationIDS);
         
         $path='MarketInformation/marketInformation';
         $ext='.php';

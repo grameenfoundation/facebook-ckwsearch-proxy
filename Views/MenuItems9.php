@@ -17,7 +17,7 @@ if($connection){
         $ugandaBudgetInformationquery=("select * from menu_Item where parent_id='a0r70000000TQG3A' order by label asc");
         $ugandaBudgetInformationResult = mysqli_query($connection,$ugandaBudgetInformationquery)                
                 or die('Invalid query for selecting Uganda Budget Information: ' . mysqli_error($connection));
-        echo " Record selected successfully";
+       // echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
     while ($ugandaBudgetInformationObj = $ugandaBudgetInformationResult->fetch_object()) {
@@ -25,7 +25,11 @@ if($connection){
         $ugandaBudgetInformationLabels=$ugandaBudgetInformationObj->label;
         $ugandaBudgetInformationContent=$ugandaBudgetInformationObj->content;
          
-         printf ("%s \n", $ugandaBudgetInformationIDS);
+        
+        if (strpos($ugandaBudgetInformationContent,'No Content') !== false) {
+            $ugandaBudgetInformationContent='';
+        }
+        // printf ("%s \n", $ugandaBudgetInformationIDS);
         
         $path='UgandaBudgetInformation/ugandaBudgetInformation';
         $ext='.php';

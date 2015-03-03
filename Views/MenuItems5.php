@@ -17,7 +17,7 @@ if($connection){
         $LocalKnowledgequery=("select * from menu_Item where parent_id='a0r70000000StF8A' order by label asc");
         $LocalKnowledgeResult = mysqli_query($connection,$LocalKnowledgequery)                
                 or die('Invalid query for selecting Local Knowledge ,: ' . mysqli_error($connection));
-        echo " Record selected successfully";
+        //echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
     while ($LocalKnowledgeObj = $LocalKnowledgeResult->fetch_object()) {
@@ -25,7 +25,11 @@ if($connection){
         $LocalKnowledgeLabels=$LocalKnowledgeObj->label;
         $LocalKnowledgeContent=$LocalKnowledgeObj->content;
          
-         printf ("%s \n", $LocalKnowledgeIDS);
+        
+        if (strpos($LocalKnowledgeContent,'No Content') !== false) {
+            $LocalKnowledgeContent='';
+        }
+       //  printf ("%s \n", $LocalKnowledgeIDS);
         
         $path='LocalKnowledge/LocalKnowledge';
         $ext='.php';

@@ -139,7 +139,7 @@ a:hover {
       <!--
       <div>
           <img class="logo" typeof="foaf:Image" src="grameen-foundation-logo-1.png"> 
-          </div>  --> 
+          </div>  
       
  
   <div>
@@ -154,8 +154,8 @@ a:hover {
 <a href="Db/DownloadKeywords.php"> Download Keywords |</a>
 <a href="Db/DownloadImageId.php"> Download Image IDs |</a>
 
-  
-  </div>
+  -->
+  </div> 
   
   </body>
   <html/>

@@ -17,7 +17,7 @@ if($connection){
         $serviceProvidersquery=("select * from menu_Item where parent_id='a0r70000000Su3xA' order by label asc");
         $serviceProvidersResult = mysqli_query($connection,$serviceProvidersquery)                
                 or die('Invalid query for selecting Market Information ,: ' . mysqli_error($connection));
-        echo " Record selected successfully";
+       // echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
     while ($serviceProvidersObj = $serviceProvidersResult->fetch_object()) {
@@ -25,7 +25,11 @@ if($connection){
         $serviceProvidersLabels=$serviceProvidersObj->label;
         $serviceProvidersContent=$serviceProvidersObj->content;
          
-         printf ("%s \n", $serviceProvidersIDS);
+        
+        if (strpos($serviceProvidersContent,'No Content') !== false) {
+            $serviceProvidersContent='';
+        }
+        // printf ("%s \n", $serviceProvidersIDS);
         
         $path='ServiceProviders/serviceProviders';
         $ext='.php';

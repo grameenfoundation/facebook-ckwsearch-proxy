@@ -18,7 +18,7 @@
  */
 
 include 'TableCreations.php';
-include 'Initialization.php';
+include 'Globals.php';
 
 class Keywords{}
 $downloadKeywords=new Keywords();

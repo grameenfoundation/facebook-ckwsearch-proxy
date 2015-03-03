@@ -45,8 +45,13 @@ $resultMenus = mysqli_query($connection,$getMenus);
         $menuItemIDS=$menuItemObj->id;
         $menuItemLabels=$menuItemObj->label;
         $menuItemContent=$menuItemObj->content;
+       
+     
+        if (strpos($menuItemContent,'No Content') !== false) {
+            $menuItemContent='';
+        }
         
-        printf(" %s-%s , ",$menuItemIDS,$menuItemLabels);
+        //printf(" %s-%s , ",$menuItemIDS,$menuItemLabels);
        
         $path='Views/MenuItems';
         $ext='.php';

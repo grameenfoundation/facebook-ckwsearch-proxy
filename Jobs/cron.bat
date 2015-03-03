@@ -1,4 +1,4 @@
-@echo off
+@echo on
 REM -----
 REM Copyright (c) 2015 AppLab, Grameen Foundation
 REM Cron job in WAMP

@@ -1,16 +1,15 @@
 <?php
 
+
 /*
+ * Copyright (c) 2015 AppLab, Grameen Foundation
+ *
+ *  Facebook MVP 
+ *  
+ *  
+ **/
 
-PHP Template Inheritance
-------------------------
-Version: 0.9
-Released: Sun Mar 28 10:05:41 2010 -0700
-Website: http://phpti.com/
-Author: Adam Shaw (http://arshaw.com/)
-Released under the MIT License (license.txt)
 
-*/
 
 
 $GLOBALS['_ti_base'] = null;

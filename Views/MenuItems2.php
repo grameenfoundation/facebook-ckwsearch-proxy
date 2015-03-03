@@ -17,7 +17,7 @@ if($connection){
         $Animalsquery=("select * from menu_Item where parent_id='a0r70000000StFsA' order by label asc");
         $AnimalsResult = mysqli_query($connection,$Animalsquery)                
                 or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
-        echo " Record selected successfully";
+      //  echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
     while ($AnimalsObj = $AnimalsResult->fetch_object()) {
@@ -25,7 +25,12 @@ if($connection){
         $AnimalsLabels=$AnimalsObj->label;
         $AnimalsContent=$AnimalsObj->content;
          
-         printf ("%s \n", $AnimalsIDS);
+        
+        if (strpos($AnimalsContent,'No Content') !== false) {
+            $AnimalsContent='';
+        }
+        
+       //  printf ("%s \n", $AnimalsIDS);
         
         $path='Animals/Animals';
         $ext='.php';

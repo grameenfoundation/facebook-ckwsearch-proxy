@@ -17,7 +17,7 @@ if($connection){
         $adoptionquery=("select * from menu_Item where parent_id='a0r70000000TGj6A' order by label asc");
         $adoptionResult = mysqli_query($connection,$adoptionquery)                
                 or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
-        echo " Record selected successfully";
+       // echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
     while ($adoptionObj = $adoptionResult->fetch_object()) {
@@ -25,7 +25,12 @@ if($connection){
         $adoptionLabels=$adoptionObj->label;
         $adoptionContent=$adoptionObj->content;
          
-         printf ("%s \n", $adoptionIDS);
+        
+        
+        if (strpos($adoptionContent,'No Content') !== false) {
+            $adoptionContent='';
+        }
+        // printf ("%s \n", $adoptionIDS);
         
         $path='AdoptionMessage/AdoptionMsg';
         $ext='.php';

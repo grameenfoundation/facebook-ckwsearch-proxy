@@ -17,7 +17,7 @@ if($connection){
         $weedsquery=("select * from menu_Item where parent_id='a0r70000000TSsIA' order by label asc");
         $weedsResult = mysqli_query($connection,$weedsquery)                
                 or die('Invalid query for selecting Uganda Budget Information: ' . mysqli_error($connection));
-        echo " Record selected successfully";
+       // echo " Record selected successfully";
         echo ''. "</br>";
            $num=0;
     while ($weedsObj = $weedsResult->fetch_object()) {
@@ -25,7 +25,11 @@ if($connection){
         $weedsLabels=$weedsObj->label;
         $weedsContent=$weedsObj->content;
          
-         printf ("%s \n", $weedsIDS);
+        
+        if (strpos($weedsContent,'No Content') !== false) {
+            $weedsContent='';
+        }
+        // printf ("%s \n", $weedsIDS);
         
         $path='Weeds/weeds';
         $ext='.php';
