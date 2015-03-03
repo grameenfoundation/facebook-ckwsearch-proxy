@@ -154,8 +154,6 @@ a:hover {
 <a href="Db/DownloadKeywords.php"> Download Keywords |</a>
 <a href="Db/DownloadImageId.php"> Download Image IDs |</a>
 
-
-
   
   </div>
   

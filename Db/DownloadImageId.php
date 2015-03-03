@@ -11,43 +11,33 @@
 <?php
 
 
-
 include 'TableCreations.php';
+include 'Initialization.php';
 
-class foo{}
-$boo=new foo();
+class Image{}
+$downloadImageIds=new Image();
 
 
 //get Contents from salesforce
-$gr_url = "http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%0A%22imei%22%3A%20%22355435053574074%22%2C%20%22keywordsVersion%22%3A%222014-01-01%2000%3A00%3A00%22%2C%0A%22ImagesLastUpdatedDate%22%3A%222014-01-01%2000%3A00%3A00%22%0A%7D%0A&method=keywords";
-$response = file_get_contents($gr_url);
+$imageIdUrl = "http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%0A%22imei%22%3A%20%22$imei%22%2C%20%22keywordsVersion%22%3A%22$keywordsVersion%2000%3A00%3A00%22%2C%0A%22ImagesLastUpdatedDate%22%3A%22$ImagesLastUpdatedDate%2000%3A00%3A00%22%0A%7D%0A&method=keywords";
+$response = file_get_contents($imageIdUrl);
 
 //decode json string
-$boo =  json_decode($response);
+$downloadImageIds =  json_decode($response);
 
 echo "</br>";
 
- $version = $boo->{'version'};
- $total = $boo->{'total'};
- $resultMessage = $boo->{'resultMessage'};
- $resultCode = $boo->{'resultCode'};
+ $version = $downloadImageIds->{'version'};
+ $total = $downloadImageIds->{'total'};
+ $resultMessage = $downloadImageIds->{'resultMessage'};
+ $resultCode = $downloadImageIds->{'resultCode'};
  
  /*
-  "deletedMenuItems" : null,
   "deletedImages" : null */
- 
- //get menus
- $menus=array();
- $menus=$boo->{'menus'};
- 
- 
- //getmenuItems
- $menuItems=array();
- $menuItems=$boo->{'menuItems'};
  
  //getImages
  $menuImages=array();
- $menuImages=$boo->{'images'};
+ $menuImages=$downloadImageIds->{'images'};
  
   //echo $total. "</br>";
 
@@ -60,9 +50,9 @@ echo "</br>";
         $images= $value->{'id'};
         echo $images."</br>";
         
-    $query5=("insert IGNORE into image (id)values('$images')");
+    $insertImageIdsQuery=("insert IGNORE into image (id)values('$images')");
       
-    $result5 = mysqli_query($connection,$query5);
+    $result5 = mysqli_query($connection,$insertImageIdsQuery);
     
     if ($result5) {
        echo " Menu Image ID record created successfully";

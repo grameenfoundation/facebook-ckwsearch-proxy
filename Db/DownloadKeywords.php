@@ -18,24 +18,25 @@
  */
 
 include 'TableCreations.php';
+include 'Initialization.php';
 
-class foo{}
-$boo=new foo();
+class Keywords{}
+$downloadKeywords=new Keywords();
 
 
-//get Contents from salesforce
-$gr_url = "http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%0A%22imei%22%3A%20%22355435053574074%22%2C%20%22keywordsVersion%22%3A%222014-01-01%2000%3A00%3A00%22%2C%0A%22ImagesLastUpdatedDate%22%3A%222014-01-01%2000%3A00%3A00%22%0A%7D%0A&method=keywords";
-$response = file_get_contents($gr_url);
+//get Content from salesforce
+$keywordUrl = "http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%0A%22imei%22%3A%20%22$imei%22%2C%20%22keywordsVersion%22%3A%22$keywordsVersion%2000%3A00%3A00%22%2C%0A%22ImagesLastUpdatedDate%22%3A%22$ImagesLastUpdatedDate%2000%3A00%3A00%22%0A%7D%0A&method=keywords";
+$response = file_get_contents($keywordUrl);
 
 //decode json string
-$boo =  json_decode($response);
+$downloadKeywords =  json_decode($response);
 
 echo "</br>";
 
- $version = $boo->{'version'};
- $total = $boo->{'total'};
- $resultMessage = $boo->{'resultMessage'};
- $resultCode = $boo->{'resultCode'};
+ $version = $downloadKeywords->{'version'};
+ $total = $downloadKeywords->{'total'};
+ $resultMessage = $downloadKeywords->{'resultMessage'};
+ $resultCode = $downloadKeywords->{'resultCode'};
  
  /*
   "deletedMenuItems" : null,
@@ -43,16 +44,16 @@ echo "</br>";
  
  //get menus
  $menus=array();
- $menus=$boo->{'menus'};
+ $menus=$downloadKeywords->{'menus'};
  
  
  //getmenuItems
  $menuItems=array();
- $menuItems=$boo->{'menuItems'};
+ $menuItems=$downloadKeywords->{'menuItems'};
  
  //getImages
  $menuImages=array();
- $menuImages=$boo->{'images'};
+ $menuImages=$downloadKeywords->{'images'};
  
   //echo $total. "</br>";
 
@@ -67,9 +68,9 @@ echo "</br>";
     $menuLabel= $value->{'label'};
    
     
-    $query3=("insert IGNORE into menu (id,label)values('$menuId','$menuLabel')");
+    $insertMenuQuery=("insert IGNORE into menu (id,label)values('$menuId','$menuLabel')");
       
-    $result3 = mysqli_query($connection,$query3);
+    $result3 = mysqli_query($connection,$insertMenuQuery);
     
     if ($result3) {
        echo "New Menu record created successfully";
