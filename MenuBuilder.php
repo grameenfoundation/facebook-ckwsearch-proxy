@@ -46,6 +46,9 @@ $resultMenus = mysqli_query($connection,$getMenus);
         $menuItemLabels=$menuItemObj->label;
         $menuItemContent=$menuItemObj->content;
        
+       
+          //   $var = $menuItemIDS;
+        
      
         if (strpos($menuItemContent,'No Content') !== false) {
             $menuItemContent='';
@@ -53,16 +56,29 @@ $resultMenus = mysqli_query($connection,$getMenus);
         
         //printf(" %s-%s , ",$menuItemIDS,$menuItemLabels);
        
-        $path='Views/MenuItems';
+        $path='Views/';
         $ext='.php';
         
         $num =$num+1;
         $str=  strval($num);
-        $fullLink=$path.$str.$ext;
+        $fullLink=$menuItemIDS.$ext;
+        
+        //printf($fullLink);
+        $file =  fopen($fullLink, "c");
         
         echo ''."<ul id='menu'>";
         echo ''."<li ><a href=$fullLink>$menuItemLabels</a></li>";
         echo ''."$menuItemContent". "</ul> "; 
+        
+        $newPageContent = file_get_contents('/SubMenu.php', true);
+       // print_r($newPageContent);
+        
+        
+       $more="<?php  \$var='$menuItemIDS'?>";
+       
+       fwrite($file, $more.$newPageContent);
+       
+       fclose($file);
            
     }
                  

@@ -9,7 +9,7 @@
 -->
   
 
-<?php include 'base.php' ?>
+<?php require 'base.php' ?>
 
 
 <!DOCTYPE html>
