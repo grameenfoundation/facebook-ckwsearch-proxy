@@ -54,6 +54,7 @@ if($connection){
         $more="<?php  \$var='$subMenuIDS'?>";
        
         fwrite($file, $more.$newPageContent);
+        fclose($file);
       
     }
     

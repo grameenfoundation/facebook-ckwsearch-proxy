@@ -45,25 +45,17 @@ $resultMenus = mysqli_query($connection,$getMenus);
         $menuItemIDS=$menuItemObj->id;
         $menuItemLabels=$menuItemObj->label;
         $menuItemContent=$menuItemObj->content;
-       
-       
-          //   $var = $menuItemIDS;
         
      
         if (strpos($menuItemContent,'No Content') !== false) {
             $menuItemContent='';
         }
         
-        //printf(" %s-%s , ",$menuItemIDS,$menuItemLabels);
-       
-        $path='Views/';
+        
         $ext='.php';
         
-        $num =$num+1;
-        $str=  strval($num);
         $fullLink=$menuItemIDS.$ext;
-        
-        //printf($fullLink);
+         
         $file =  fopen($fullLink, "c");
         
         echo ''."<ul id='menu'>";

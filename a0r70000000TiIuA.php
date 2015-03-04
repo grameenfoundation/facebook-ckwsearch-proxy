@@ -13,7 +13,7 @@ include 'base.php';
 include 'Db/connection.php';
 
 
-printf($var);
+//printf($var);
 
 if($connection){
    
@@ -42,7 +42,7 @@ if($connection){
         $str=  strval($num);
        $fullLink=$subMenuIDS.$ext;
         
-        printf($fullLink);
+       // printf($fullLink);
         $file =  fopen($fullLink, "c");
         
         echo ''."<ul id='menu'>";
@@ -54,9 +54,8 @@ if($connection){
         $more="<?php  \$var='$subMenuIDS'?>";
        
         fwrite($file, $more.$newPageContent);
+        fclose($file);
       
-       
- 
     }
     
     

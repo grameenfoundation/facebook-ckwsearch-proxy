@@ -13,11 +13,11 @@ include 'base.php';
 include 'Db/connection.php';
 
 
-printf($var);
+//printf($var);
 
 if($connection){
    
-    //select  Adoption Messages of menu Item where parent Id and id=$menuItemIDS
+    //select  menu Item where  id=$var
         $subMenuquery=("select * from menu_Item where parent_id='$var' order by label asc");
         $subMenuResult = mysqli_query($connection,$subMenuquery)                
                 or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
@@ -33,16 +33,12 @@ if($connection){
         if (strpos($subMenuContent,'No Content') !== false) {
             $subMenuContent='';
         }
-        // printf ("%s \n", $adoptionIDS);
-        
-        $path='AdoptionMessage/AdoptionMsg';
+                
         $ext='.php';
         
-        $num =$num+1;
-        $str=  strval($num);
        $fullLink=$subMenuIDS.$ext;
         
-        printf($fullLink);
+       // printf($fullLink);
         $file =  fopen($fullLink, "c");
         
         echo ''."<ul id='menu'>";
@@ -54,9 +50,22 @@ if($connection){
         $more="<?php  \$var='$subMenuIDS'?>";
        
         fwrite($file, $more.$newPageContent);
+        fclose($file);
       
-       
- 
+    }
+    
+    
+}  else {
+    die('Error connecting to Db'.mysqli_error($connection));
+}
+
+
+?>
+
+
+write($file, $more.$newPageContent);
+        fclose($file);
+      
     }
     
     
