@@ -4,15 +4,16 @@
  *
  *  Facebook MVP 
  *  
- *  
+ *  Copyright (c) 2015 Grameen Foundation
  **/
 -->
-  Copyright (c) 2015 Grameen Foundation
+  
 
 <?php require_once 'phpti-0.9/ti.php' ?>
 
 <html>
  <head>
+   
   <meta name="viewport" content="width=device-width" />   
   <style type="text/css">
 * {
@@ -22,14 +23,30 @@
 
 html {
     background: #ddd;
+    background: #eee;
+    box-shadow:
+        0 1px 1px rgba(0,0,0,0.15), /* The top layer shadow */
+        0 10px 0 -5px #eee, /* The second layer */
+        0 10px 1px -4px rgba(0,0,0,0.15), /* The second layer shadow */
+        0 20px 0 -10px #eee, /* The third layer */
+        0 20px 1px -9px rgba(0,0,0,0.15); /* The third layer shadow */
 }
 body {
+    
+    border-radius: 3em 1em;
     margin: 1em 10%;
-    padding: 2em 6em;
+    padding: 1em 1em;
     font: 80%/1.4 tahoma, arial, helvetica, lucida sans, sans-serif;
     border: 1px solid #999;
     background: #FFFFFF; // #eee;
-    position: absolute;//relative;
+    position: absolute;
+    text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.5); 
+    box-shadow:
+        0 1px 1px rgba(0,0,0,0.15), /* The top layer shadow */
+        0 10px 0 -5px #eee, /* The second layer */
+        0 10px 1px -4px rgba(0,0,0,0.15), /* The second layer shadow */
+        0 20px 0 -10px #eee, /* The third layer */
+        0 20px 1px -9px rgba(0,0,0,0.15); /* The third layer shadow */
 }
 #head {
     margin-bottom: 1.8em;
@@ -134,28 +151,14 @@ a:hover {
 <body>
 
   <div>
-      <!--
-    <div><a href="/" rel="home" title=" Home" class="active"><img class="logo" typeof="foaf:Image" src="http://www.grameenfoundation.org/sites/all/themes/grameen-foundation/images/grameen-foundation-logo-1.png" alt=" logo" title=" Home"/></a>
-    </div> 
-     -->
+     
       <div>
           <img class="logo" typeof="foaf:Image" src="grameen-foundation-logo-1.png"> 
           </div>  
       
-  <!--
-  <div>
-    <a href="/about">About Us |</a>
-    <a href="/what-we-do" title=""> What We Do |</a><a href="/where-we-work"> Where We Work |</a><a href="/our-impact/personal-stories" title=""> Our Impact |</a><a href="/news-events/grameen-foundation-in-the-news" title=""> News &amp; Events |</a>
-  </div>  
+  
 
-<a href="testCountryCode.php">Test Country Code |</a>
-<a href="testKeywords.php"> Test Keywords |</a>
-<a href="testImages.php"> Test Images |</a>
-<a href="testFarmers.php"> Test Farmers |</a>
-<a href="Db/DownloadKeywords.php"> Download Keywords |</a>
-<a href="Db/DownloadImageId.php"> Download Image IDs |</a>
-
-  -->
+  
   </div> 
   
   </body>
