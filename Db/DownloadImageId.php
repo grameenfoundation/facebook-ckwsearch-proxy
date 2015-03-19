@@ -12,7 +12,7 @@
 
 
 include 'TableCreations.php';
-include 'Globals.php';
+include 'Config.php';
 
 class Image{}
 $downloadImageIds=new Image();

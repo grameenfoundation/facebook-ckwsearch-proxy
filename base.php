@@ -33,20 +33,23 @@ html {
 }
 body {
     
-    border-radius: 3em 1em;
+    border-radius: 1em 1em;
     margin: 1em 10%;
     padding: 1em 1em;
     font: 80%/1.4 tahoma, arial, helvetica, lucida sans, sans-serif;
-    border: 1px solid #999;
+    //border: 1px solid #999;
+    //border-style: solid;
+    border-color: #3E3E76;
+    border-top-style: dotted;
+    border-right-style: solid;
+    border-bottom-style: dotted;
+    border-left-style: solid;
+    background-repeat: initial;
     background: #FFFFFF; // #eee;
+    // background-color: #cccccc;
     position: absolute;
-    text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.5); 
-    box-shadow:
-        0 1px 1px rgba(0,0,0,0.15), /* The top layer shadow */
-        0 10px 0 -5px #eee, /* The second layer */
-        0 10px 1px -4px rgba(0,0,0,0.15), /* The second layer shadow */
-        0 20px 0 -10px #eee, /* The third layer */
-        0 20px 1px -9px rgba(0,0,0,0.15); /* The third layer shadow */
+    //text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.5); 
+   
 }
 #head {
     margin-bottom: 1.8em;
@@ -153,11 +156,10 @@ a:hover {
   <div>
      
       <div>
-          <img class="logo" typeof="foaf:Image" src="grameen-foundation-logo-1.png"> 
+          <img class="logo" typeof="foaf:Image" src="image2.png" > 
           </div>  
       
-  
-
+ 
   
   </div> 
   
