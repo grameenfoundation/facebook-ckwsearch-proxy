@@ -13,58 +13,31 @@
 include 'base.php';
 include 'Db/connection.php';
 
-
-
-if($connection){
-    if( $_GET["id"]){
-        $txx = $_GET["id"];
-        
+if($connection) {
+    if( $_GET["id"]) {
+        $id = $_GET["id"];
     } else {
-        $txx = "";
-        
+        $id = "";
     }
     
+    //select  Menu Item where id = $var
+    $subMenuquery=("select * from menu_Item where parent_id='$id' order by label asc");
+    $subMenuResult = mysqli_query($connection,$subMenuquery)                
+            or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
   
-    //select  Menu Item where id =$var
-        $subMenuquery=("select * from menu_Item where parent_id='$txx' order by label asc");
-        $subMenuResult = mysqli_query($connection,$subMenuquery)                
-                or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
-      
-        echo ''. "</br>";
+    echo ''. "</br>";
            
     while ($subMenuObj = $subMenuResult->fetch_object()) {
-        $subMenuIDS=$subMenuObj->id;
-        $subMenuLabels=$subMenuObj->label;
-        $subMenuContent=$subMenuObj->content;
-         
-         $_GET["subMenuLabels"]=$subMenuLabels;
-         $_GET["id"]=$subMenuIDS;
-         $txx=$_GET["id"];
+        $subMenuContent = $subMenuObj->content;
         
-         $_POST["show"]=0;
-         $show=$_GET["show"];
         if (strpos($subMenuContent,'No Content') !== false) {
             $subMenuContent='';
         }
         
-        $_GET["subMenuContent"]=$subMenuContent;
-        
-        $file="SubMenu.php?id=";
-        
-        if ($txx != "" ){
-            echo ""."<ul id='menu'>";
-            echo ""."<li ><a href='index.php?id=".$txx."&show=1' title='Next Page' class='NameAgain' >".$_GET["subMenuLabels"]."</a></li>";
-            echo "". $_GET['subMenuContent']."</ul> ";        
-        }
-        
-        }  
-        
-    }  else {
-        die('Error connecting to Db'.mysqli_error($connection));
-        
-    }
-        
-        
-        ?>
-
-
+        echo ""."<ul id='menu'>";
+        echo ""."<li ><a href='index.php?id=".$subMenuObj->id."' title='Next Page' class='NameAgain' >".$subMenuObj->label."</a></li>";
+        echo "". $subMenuContent ."</ul> ";
+    }  
+}  else {
+    die('Error connecting to Db'.mysqli_error($connection));
+}
