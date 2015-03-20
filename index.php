@@ -22,7 +22,6 @@
     </body>
 <html/>
 
-<<<<<<< HEAD
 
 <?php 
 
@@ -32,7 +31,6 @@ if($connection) {
     //getMenuIds
     $getMenus=("select * from menu where label='CKW Search'");
     $resultMenus = mysqli_query($connection,$getMenus);
-    
     if ($resultMenus) {
         
         if( isset($_GET["id"]) ) {
@@ -40,7 +38,7 @@ if($connection) {
     } else {
         $id = "";
     }
-    //select all last level IDS
+    //select all last level IDS in the tree
     $query=("select id from menu_item where parent_id=id");
         $result = mysqli_query($connection,$query)                
             or die('Invalid query for selecting parentId: ' . mysqli_error($connection));
@@ -55,17 +53,6 @@ if($connection) {
     
     //select  Menu Item where id $_GET["id"]
     $subMenuquery=("select * from menu_item where parent_id='$id' order by position asc, label asc");
-=======
-if($connection) {
-    if( $_GET["id"]) {
-        $id = $_GET["id"];
-    } else {
-        $id = "";
-    }
-    
-    //select  Menu Item where id = $var
-    $subMenuquery=("select * from menu_Item where parent_id='$id' order by label asc");
->>>>>>> 99b679e841c7ec1650d62c39ddf8d2f89cc4f3d5
     $subMenuResult = mysqli_query($connection,$subMenuquery)                
             or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
   
@@ -73,15 +60,10 @@ if($connection) {
            
     while ($subMenuObj = $subMenuResult->fetch_object()) {
         $subMenuContent = $subMenuObj->content;
-<<<<<<< HEAD
-        
-=======
->>>>>>> 99b679e841c7ec1650d62c39ddf8d2f89cc4f3d5
-        
+               
         if (strpos($subMenuContent,'No Content') !== false) {
             $subMenuContent='';
         }
-<<<<<<< HEAD
    
     if (in_array($subMenuObj->id, $arr)) {
             echo ""."<ul id='menu'>";
@@ -92,27 +74,24 @@ if($connection) {
             
             echo ""."<ul id='menu'>";
             echo ""."<li ><a href='index.php?id=".$subMenuObj->id."' title='Next Page' class='SubMenu' >".$subMenuObj->label."</a></li>";
-            echo "". $subMenuContent ."</ul> "; 
-        
+            $subContent=explode('Attribution:',$subMenuContent);
+            echo "".substr($subContent[0], 0, 200)."</ul> ";
+                    
         }     
         
-    }  
-    print_r(array_values($arr));
+    } 
+    echo ''. "</br>";
+   // print_r(array_values($arr));
         
-    }else {
+    }
+    // Select another Menu
+    elseif (FALSE) {
+        
+    }
+    else {
         die('Invalid query for selecting menus: ' . mysqli_error($connection));    
     }
                     
 }else {
     die('Error connecting to Db'.mysqli_error($connection));
 }
-=======
-        
-        echo ""."<ul id='menu'>";
-        echo ""."<li ><a href='index.php?id=".$subMenuObj->id."' title='Next Page' class='NameAgain' >".$subMenuObj->label."</a></li>";
-        echo "". $subMenuContent ."</ul> ";
-    }  
-}  else {
-    die('Error connecting to Db'.mysqli_error($connection));
-}
->>>>>>> 99b679e841c7ec1650d62c39ddf8d2f89cc4f3d5
