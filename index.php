@@ -22,6 +22,7 @@
     </body>
 <html/>
 
+<<<<<<< HEAD
 
 <?php 
 
@@ -54,6 +55,17 @@ if($connection) {
     
     //select  Menu Item where id $_GET["id"]
     $subMenuquery=("select * from menu_item where parent_id='$id' order by position asc, label asc");
+=======
+if($connection) {
+    if( $_GET["id"]) {
+        $id = $_GET["id"];
+    } else {
+        $id = "";
+    }
+    
+    //select  Menu Item where id = $var
+    $subMenuquery=("select * from menu_Item where parent_id='$id' order by label asc");
+>>>>>>> 99b679e841c7ec1650d62c39ddf8d2f89cc4f3d5
     $subMenuResult = mysqli_query($connection,$subMenuquery)                
             or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
   
@@ -61,11 +73,15 @@ if($connection) {
            
     while ($subMenuObj = $subMenuResult->fetch_object()) {
         $subMenuContent = $subMenuObj->content;
+<<<<<<< HEAD
         
+=======
+>>>>>>> 99b679e841c7ec1650d62c39ddf8d2f89cc4f3d5
         
         if (strpos($subMenuContent,'No Content') !== false) {
             $subMenuContent='';
         }
+<<<<<<< HEAD
    
     if (in_array($subMenuObj->id, $arr)) {
             echo ""."<ul id='menu'>";
@@ -90,3 +106,13 @@ if($connection) {
 }else {
     die('Error connecting to Db'.mysqli_error($connection));
 }
+=======
+        
+        echo ""."<ul id='menu'>";
+        echo ""."<li ><a href='index.php?id=".$subMenuObj->id."' title='Next Page' class='NameAgain' >".$subMenuObj->label."</a></li>";
+        echo "". $subMenuContent ."</ul> ";
+    }  
+}  else {
+    die('Error connecting to Db'.mysqli_error($connection));
+}
+>>>>>>> 99b679e841c7ec1650d62c39ddf8d2f89cc4f3d5
