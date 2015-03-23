@@ -28,44 +28,40 @@ $downloadImageIds =  json_decode($response);
 
 echo "</br>";
 
- $version = $downloadImageIds->{'version'};
- $total = $downloadImageIds->{'total'};
- $resultMessage = $downloadImageIds->{'resultMessage'};
- $resultCode = $downloadImageIds->{'resultCode'};
+$version = $downloadImageIds->{'version'};
+$total = $downloadImageIds->{'total'};
+$resultMessage = $downloadImageIds->{'resultMessage'};
+$resultCode = $downloadImageIds->{'resultCode'};
  
- /*
+/*
   "deletedImages" : null */
  
- //getImages
- $menuImages=array();
- $menuImages=$downloadImageIds->{'images'};
+//getImages
+$menuImages=array();
+$menuImages=$downloadImageIds->{'images'};
  
-  //echo $total. "</br>";
+//echo $total. "</br>";
 
-  if($resultCode=='0'){
+if($resultCode=='0'){
     echo $resultMessage. "</br>"; 
     
     $value=array();
      //loop thru keyword Images
     foreach ($menuImages as $value) {
         $images= $value->{'id'};
-        echo $images."</br>";
-        
-    $insertImageIdsQuery=("insert IGNORE into image (id)values('$images')");
-      
-    $result5 = mysqli_query($connection,$insertImageIdsQuery);
-    
-    if ($result5) {
-       echo " Menu Image ID record created successfully";
-        
-    }  else {
-        die('Invalid query for insertion of imageIDs: ' . mysqli_error($connection));    
-    }
+        //echo $images."</br>";
+        $insertImageIdsQuery=("insert IGNORE into image (id)values('$images')");
+        $result5 = mysqli_query($connection,$insertImageIdsQuery);
+           
+        if ($result5) {
+           echo " Menu Image ID record created successfully";
+
+        }  else {
+            die('Invalid query for insertion of imageIDs: ' . mysqli_error($connection));    
+        }
          
     }
     
   }
-
   mysqli_close($connection);
 
-?>
