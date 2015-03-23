@@ -20,84 +20,60 @@
             </div>
         </div>
     </body>
-     
-<html/>
+
+    <html/>
 
 
-<?php 
+    <?php
+    include 'Models/connection.php';
+    include 'Models/Config.php';
 
-include 'Models/connection.php';
-include 'Models/Config.php';
+    if ($connection) {
 
-if($connection) {
-    //getMenuIds
-    $getMenus=("select * from menu where label='CKW Search'");
-    $resultMenus = mysqli_query($connection,$getMenus);
-    
-    if ($resultMenus) {
-        if( isset($_GET["id"]) ) {
-        $id = $_GET["id"];
-        
-        }else {
+        if (isset($_GET["id"])) {
+            $id = $_GET["id"];
+        } else {
             $id = "";
         }
-        //select all last level IDS in the tree for CKW Search
-        $query=("select id from menu_item where parent_id=id");
-        $result = mysqli_query($connection,$query)
-                or die('Invalid query for selecting parentId: ' . mysqli_error($connection));
-        $arr=array();
-        //array_push($arr, 'a0r70000000TGp4A');
-        //array_push($arr, 'a0r70000000TGpJA');
-        while ($resultObj=$result->fetch_object()){
-            array_push($arr, $resultObj->id);
-            
-        }
-        
         //select  Menu Item where id $_GET["id"]
-        $subMenuquery=("select * from menu_item where parent_id='$id' order by position asc, label asc");
-        $subMenuResult = mysqli_query($connection,$subMenuquery)
+        $subMenuquery = ("select * from menu_item where parent_id='$id' order by position asc, label asc");
+        $subMenuResult = mysqli_query($connection, $subMenuquery)
                 or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
-        echo ''. "</br>";
+        echo '' . "</br>";
         while ($subMenuObj = $subMenuResult->fetch_object()) {
             $subMenuContent = $subMenuObj->content;
-            if (strpos($subMenuContent,'No Content') !== false) {
-                $subMenuContent='';
-                
+            if (strpos($subMenuContent, 'No Content') !== false) {
+                $subMenuContent = '';
             }
             //check if Id not hidden arraylist
-            if(!in_array($subMenuObj->id, $hiddenIDarray)){
+            if (!in_array($subMenuObj->id, $hiddenIDarray)) {
+
                 //check if id in last level tree
-                
-                if (in_array($subMenuObj->id, $arr)) {
-                    echo ""."<ul id='menu'>";
-                    echo ""."<li><b>".$subMenuObj->label."</b></li>";
-                    echo "". $subMenuContent ."</ul> ";
-                    
-                }else {
-                    echo ""."<ul id='menu'>";
-                    echo ""."<li ><a href='index.php?id=".$subMenuObj->id."' title='Next Page' class='SubMenu' >".$subMenuObj->label."</a></li>";
-                    $subContent=explode('Attribution:',$subMenuContent);
-                    echo "".substr($subContent[0], 0, 100)."</ul> ";
+                //select all last level IDS in the tree for CKW Search
+                $subId = $subMenuObj->id;
+                $query = ("select count(id) as No from menu_item where parent_id='$subId'");
+                $result = mysqli_query($connection, $query)
+                        or die('Invalid query for selecting parentId: ' . mysqli_error($connection));
+                $countObj = $result->fetch_object();
+                $no = $countObj->No;
+
+
+                if ($no == '0') {
+                    echo "" . "<ul id='menu'>";
+                    echo "" . "<li><b>" . $subMenuObj->label . "</b></li>";
+                    echo "" . $subMenuContent . "</ul> ";
+                } else {
+                    echo "" . "<ul id='menu'>";
+                    echo "" . "<li ><a href='index.php?id=" . $subMenuObj->id . "' title='Next Page' class='SubMenu' >" . $subMenuObj->label . "</a></li>";
+                    $subContent = explode('Attribution:', $subMenuContent);
+                    echo "" . substr($subContent[0], 0, 100) . "</ul> ";
                 }
-                
             }
-                
         }
-        echo ''. "</br>";
-        // print_r(array_values($arr));
+        echo '' . "</br>";
+        
         echo 'Copyright (c) 2015 Grameen Foundation';
-        
-        }
-                // Select another Menu
-    elseif (FALSE) {
-        
+    } else {
+
+        die('Error connecting to Db' . mysqli_error($connection));
     }
-    else {
-        die('Invalid query for selecting menus: ' . mysqli_error($connection));
-        
-    }
-                
-}else {
-    die('Error connecting to Db'.mysqli_error($connection));
-    
-}
