@@ -1,13 +1,12 @@
+<!--
 /*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Mar 20, 2015, 2:59:46 PM
-    Author     : Hbt
-*/
-
+ * Copyright (c) 2015 AppLab, Grameen Foundation
+ *
+ *  Facebook MVP 
+ *  
+ *  
+ **/
+-->
 
  
 * {
@@ -16,14 +15,10 @@ and open the template in the editor.
 }
 
 html {
-    background: #ddd;
-    background: #eee;
-    box-shadow:
-        0 1px 1px rgba(0,0,0,0.15), /* The top layer shadow */
-        0 10px 0 -5px #eee, /* The second layer */
-        0 10px 1px -4px rgba(0,0,0,0.15), /* The second layer shadow */
-        0 20px 0 -10px #eee, /* The third layer */
-        0 20px 1px -9px rgba(0,0,0,0.15); /* The third layer shadow */
+    //background: #ddd;
+    //background: #eee;
+    background: #FFFFFF;
+    
 }
 body {
     
@@ -43,7 +38,9 @@ body {
     background: #FFFFFF; // #eee;
     // background-color: #cccccc;
     position: absolute;
-    //text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.5); 
+    //width:  30%;
+    //height: relative%;
+   
    
 }
 #head {
@@ -72,8 +69,11 @@ h2 {
 
 ul {
     list-style: none;
-    margin: 0;
+    margin: 2%;
     padding: 0;
+   // border-bottom: 1px solid ;
+    border-top: 1px solid;
+    border-color: #999;
 }
 #head ul li, dl ul li, #foot li {
     list-style: none;

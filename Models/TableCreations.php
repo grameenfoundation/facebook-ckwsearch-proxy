@@ -21,7 +21,7 @@ $Imagequery=('create table if not exists image(id char(16) primary key)');
 $menuResult = mysqli_query($connection,$menuQuery);
 if (!$menuResult) {
     die('Invalid query Creation menu: ' . mysqli_error($connection));
-} 
+}
 
 $menuItemResult = mysqli_query($connection,$menuItemQuery);
 if (!$menuItemResult) {
@@ -34,4 +34,3 @@ if (!$imageResult) {
     die('Invalid query Creation Image table: ' . mysqli_error($connection));
 } 
 
-?>

@@ -33,44 +33,41 @@ $downloadKeywords =  json_decode($response);
 
 echo "</br>";
 
- $version = $downloadKeywords->{'version'};
- $total = $downloadKeywords->{'total'};
- $resultMessage = $downloadKeywords->{'resultMessage'};
- $resultCode = $downloadKeywords->{'resultCode'};
+$version = $downloadKeywords->{'version'};
+$total = $downloadKeywords->{'total'};
+$resultMessage = $downloadKeywords->{'resultMessage'};
+$resultCode = $downloadKeywords->{'resultCode'};
  
- /*
+/*
   "deletedMenuItems" : null,
   "deletedImages" : null */
  
- //get menus
- $menus=array();
- $menus=$downloadKeywords->{'menus'};
+//get menus
+$menus=array();
+$menus=$downloadKeywords->{'menus'};
  
  
- //getmenuItems
- $menuItems=array();
- $menuItems=$downloadKeywords->{'menuItems'};
+//getmenuItems
+$menuItems=array();
+$menuItems=$downloadKeywords->{'menuItems'};
  
- //getImages
- $menuImages=array();
- $menuImages=$downloadKeywords->{'images'};
+//getImages
+$menuImages=array();
+$menuImages=$downloadKeywords->{'images'};
 
-  if($resultCode=='0'){
-    echo $resultMessage. "</br>"; 
-    
-   //loop thru menus 
-   $value=array(); 
-    foreach ($menus as $value) {
-    
+if($resultCode=='0'){
+    echo $resultMessage. "</br>";
+//loop thru menus
+$value=array();
+foreach ($menus as $value) {
     $menuId= $value->{'id'};
     $menuLabel= $value->{'label'};
      
     $insertMenuQuery=("insert IGNORE into menu (id,label)values('$menuId','$menuLabel')");
       
     $result3 = mysqli_query($connection,$insertMenuQuery);
-    
     if ($result3) {
-       echo "New Menu record created successfully";
+        echo "New Menu record created successfully";
         
     }  else {
         die('Invalid query for insertion of menus: ' . mysqli_error($connection));    
@@ -78,7 +75,7 @@ echo "</br>";
     echo ''. "</br>";
     //loop thru menu Items
     foreach ($menuItems as $value) {
-          
+        
         //Escape special characters for sql \n, \r, \, ', ", and Control-Z.
         $menuItemId = mysqli_real_escape_string($connection,$value->{'id'});
         $menuItemLabel = mysqli_real_escape_string($connection,$value->{'label'});
@@ -90,25 +87,22 @@ echo "</br>";
         $query4=("insert IGNORE into menu_item (id,label,menu_id,parent_id,position,content)values('$menuItemId','$menuItemLabel','$menuid','$parentid','$position','$content')");
         $result4 = mysqli_query($connection,$query4);
     
-    if ($result4) {
-       echo "New  Menu Item record created successfully";
-        
-    }  else {
-        die('Invalid query for insertion of menu Items: ' . mysqli_error($connection));    
-    }
-        
-    }
-       
-}
+        if ($result4) {
+           echo "New  Menu Item record created successfully";
+
+        }  else {
+            die('Invalid query for insertion of menu Items: ' . mysqli_error($connection));
+
+        }
     
-  }  else {
-    echo 'Not Found'. "</br>";
-    echo $resultMessage. "</br>"; 
-}
-  
-  
-   mysqli_close($connection);
+    }
+    
+    }
+      
+    }else {
+        echo 'Not Found'. "</br>";
+        echo $resultMessage. "</br>";
+        
+    }
+    mysqli_close($connection);
 
-
-
-?>
