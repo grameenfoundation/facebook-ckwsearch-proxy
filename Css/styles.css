@@ -8,7 +8,7 @@
  **/
 -->
 
- 
+
 * {
     margin: 0;
     padding: 0;
@@ -18,30 +18,17 @@ html {
     //background: #ddd;
     //background: #eee;
     background: #FFFFFF;
-    
 }
 body {
-    
-    border-radius: 1em 1em;
-    margin: 1em 10%;
-    padding: 1em 1em;
+
+    //border-radius: 1em 1em;
+    margin: 1em 10%;   
+    //padding: 1em 1em;
     font: 80%/1.4 tahoma, arial, helvetica, lucida sans, sans-serif;
-    //border: 1px solid #999;
-    //border-style: solid;
-    border-width: 0em;
-    border-color: #3E3E76;
-    border-top-style: dotted;
-    border-right-style: solid;
-    border-bottom-style: dotted;
-    border-left-style: solid;
     background-repeat: initial;
     background: #FFFFFF; // #eee;
     // background-color: #cccccc;
     position: absolute;
-    //width:  30%;
-    //height: relative%;
-   
-   
 }
 #head {
     margin-bottom: 1.8em;
@@ -69,9 +56,8 @@ h2 {
 
 ul {
     list-style: none;
-    margin: 2%;
-    padding: 0;
-   // border-bottom: 1px solid ;
+    padding: 1% 0%;
+    // border-bottom: 1px solid ;
     border-top: 1px solid;
     border-color: #999;
 }
@@ -137,10 +123,9 @@ a:hover {
     font-size: 0.85em;
 }
 .third {
-  width:32%;
-  float:left;
+    width:32%;
+    float:left;
 }
 .left {float:left;}
 .right {float:right;}
 
-  
