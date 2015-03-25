@@ -25,9 +25,9 @@ class Keywords {
 
 $downloadKeywords = new Keywords();
 
-//get Content from salesforce
-//$gr_url = "http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%0A%22imei%22%3A%20%22355435053574074%22%2C%20%22keywordsVersion%22%3A%222014-01-01%2000%3A00%3A00%22%2C%0A%22ImagesLastUpdatedDate%22%3A%222014-01-01%2000%3A00%3A00%22%0A%7D%0A&method=keywords";       
-$response = file_get_contents($Url);
+//fetch Content from salesforce
+$gr_url = "http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%0A%22imei%22%3A%20%22355435053574074%22%2C%20%22keywordsVersion%22%3A%222014-01-01%2000%3A00%3A00%22%2C%0A%22ImagesLastUpdatedDate%22%3A%222014-01-01%2000%3A00%3A00%22%0A%7D%0A&method=keywords";       
+$response = file_get_contents($gr_url);
 
 //decode json string
 $downloadKeywords = json_decode($response);
@@ -39,22 +39,13 @@ $total = $downloadKeywords->{'total'};
 $resultMessage = $downloadKeywords->{'resultMessage'};
 $resultCode = $downloadKeywords->{'resultCode'};
 
-/*
-  "deletedMenuItems" : null,
-  "deletedImages" : null */
-
 //get menus
-$menus = array();
+$menus = [];
 $menus = $downloadKeywords->{'menus'};
 
-
 //getmenuItems
-$menuItems = array();
+$menuItems = [];
 $menuItems = $downloadKeywords->{'menuItems'};
-
-//getImages
-$menuImages = array();
-$menuImages = $downloadKeywords->{'images'};
 
 if ($resultCode == '0') {
     echo $resultMessage . "</br>";
