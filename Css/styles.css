@@ -68,7 +68,8 @@ ul {
     padding: 0 0.4em;
 }
 ul.aliases, ul.projects, ul.tools {
-    list-style: none;
+    list-style: square;
+    border-top: 1px solid;
     line-height: 24px;
 }
 ul.aliases a, ul.projects a, ul.tools a {

@@ -75,7 +75,7 @@ if ($resultCode == '0') {
             $menuid = mysqli_real_escape_string($connection, $value->{'menu_id'});
             $content = mysqli_real_escape_string($connection, $value->{'content'});
 
-            $query4 = ("insert IGNORE into menu_item (id,label,menu_id,parent_id,position,content)values('$menuItemId','$menuItemLabel','$menuid','$parentid','$position','$content')");
+            $query4 = ("insert IGNORE into menuitem (id,label,menuid,parentid,position,content)values('$menuItemId','$menuItemLabel','$menuid','$parentid','$position','$content')");
             $result4 = mysqli_query($connection, $query4);
 
             if ($result4) {
