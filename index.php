@@ -17,11 +17,12 @@
 
             function substrword($str, $begin, $length) {
                 if (($begin + $length) < strlen($str)) {
-                    return substr($str, $begin, $length) . current(explode('.', substr($str, $length))) . ' ...';
+                    return substr($str, $begin, $length) . current(explode(' ', substr($str, $length))) . ' ...';
+                } else {
+                    return $str;
                 }
-                return $str;
             }
-            
+
             if (isset($_GET["menuId"])) {
                 $menuId = $_GET["menuId"];
             } else {
@@ -70,7 +71,7 @@
                                     echo "" . "<ul id='menuItem'>";
                                     echo "" . "<li ><a href='index.php?id=" . $subMenuObj->id . "&menuId=" . $menuId . "' title='Next Page' class='SubMenu' >" . $subMenuObj->label . "</a></li>";
                                     $subContent = explode('Attribution:', $subMenuObj->content);
-                                    echo "" . substrword($subContent[0], 0, 120)  . "</ul> ";
+                                    echo "" . substrword($subContent[0], 0, 120) . "</ul> ";
                                 }
                             }
                         }
@@ -104,25 +105,14 @@
                                 }
                             } elseif ($count == '0') {
 
+
                                 echo "" . "<ul id='menuItem'>";
-                                echo "" . "<li ><a href='index.php?id=" . $subMenuObj->id . "&menuId=" . $menuId . "' title='Next Page' class='SubMenu' >" . $subMenuObj->label . "</a></li>";
+                                echo "" . "<li ><a href='finalDisplay.php?id=" . $subMenuObj->id . "&menuId=" . $menuId . "' title='Next Page' class='SubMenu' >" . $subMenuObj->label . "</a></li>";
                                 $subContent = explode('Attribution:', $subMenuObj->content);
                                 echo "" . substrword($subContent[0], 0, 120) . "</ul> ";
                             }
                         }
-
-                        $queryLastChild = ("select content from menuitem where menuid='$menuId' and id='$id'");
-                        $resultLastChild = mysqli_query($connection, $queryLastChild)
-                                or die('Invalid query for selecting last level content ' . mysqli_error($connection));
-                        $contentObj = $resultLastChild->fetch_object();
-                        $content = $contentObj->content;
-
-                        if (strpos($content, 'No Content') !== FALSE) {
-                            $content = '';
-                        } else {
-                            echo "" . "<ul id='menu'>";
-                            echo "" . $content . "</ul> ";
-                        }
+                        
                     }
                 }
             } else {
