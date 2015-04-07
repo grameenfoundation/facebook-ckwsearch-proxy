@@ -34,12 +34,9 @@
             $contentObj = $resultLastChild->fetch_object();
             $content = $contentObj->content;
 
-            if (strpos($content, 'No Content') !== FALSE) {
-                $content = '';
-            } else {
                 echo "" . "<ul id='menu'>";
                 echo "" . $content . "</ul> ";
-            }
+            
             ?>
         </div>
         <small>Copyright (c) 2015 Grameen Foundation </small>
