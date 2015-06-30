@@ -11,7 +11,7 @@
 <?php
 $host = "localhost";
 $uname = "root";
-$pass = "";
+$pass = "ckw@pps";
 $database = "gfsearch";
 
 $connection = mysqli_connect($host, $uname, $pass)
@@ -19,5 +19,6 @@ $connection = mysqli_connect($host, $uname, $pass)
 $selectdb = mysqli_select_db($connection, $database) or die("Database could not be selected");
 $result = mysqli_select_db($connection, $database)
         or die("database cannot be selected <br>");
+?>
 
 

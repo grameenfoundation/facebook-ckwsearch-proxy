@@ -35,22 +35,23 @@
             }
             if ($connection) {
                 if ($menuId == "") {
-
-                    //select Ids from Menu
+   
+		//select Ids from Menu
                     $getMenu = ("select * from menu order by label asc");
                     $resultMenu = mysqli_query($connection, $getMenu);
 
                     if ($resultMenu) {
 
                         while ($menuObj = $resultMenu->fetch_object()) {
-                            if (!in_array($menuObj->id, $hiddenMenuId)) {
+                            if (in_array($menuObj->id, $hiddenMenuId)) {
                                 echo "</br>";
                                 echo '' . "<ul id='menu'>";
                                 echo "" . "<li ><a href='index.php?menuId=" . $menuObj->id . "' title='Next Page' class='SubMenu' >" . $menuObj->label . "</a></li><ul>";
                                 echo "" . "</ul>";
                             }
                         }
-                    }
+                    }else{
+			echo 'no menus';	}
                 } elseif ($menuId != "") {
                     if ($id == "") {
                         $subMenuQuery = ("select * from menuitem where parentid='$id' and menuid='$menuId' order by position asc, label asc");
@@ -93,7 +94,6 @@
                             //check If there are sub menus
                             if ($count != '0') {
                                 if (strpos($subMenuObj->content, 'No Content') !== FALSE) {
-
                                     echo "" . "<ul id='menuItem'>";
                                     echo "" . "<li ><a href='index.php?id=" . $subMenuObj->id . "&menuId=" . $menuId . "' title='Next Page' class='SubMenu' >" . $subMenuObj->label . "</a></li>";
                                     echo "" . "</ul> ";
@@ -104,15 +104,12 @@
                                     echo "" . substrword($subContent[0], 0, 120) . "</ul> ";
                                 }
                             } elseif ($count == '0') {
-
-
                                 echo "" . "<ul id='menuItem'>";
                                 echo "" . "<li ><a href='finalDisplay.php?id=" . $subMenuObj->id . "&menuId=" . $menuId . "' title='Next Page' class='SubMenu' >" . $subMenuObj->label . "</a></li>";
                                 $subContent = explode('Attribution:', $subMenuObj->content);
                                 echo "" . substrword($subContent[0], 0, 120) . "</ul> ";
                             }
-                        }
-                        
+                        }   
                     }
                 }
             } else {
