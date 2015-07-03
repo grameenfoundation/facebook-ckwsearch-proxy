@@ -16,9 +16,9 @@ $Url='http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%0A%
 $hiddenMenuItemId=array();
 array_push($hiddenMenuItemId, 'a0r70000000Um3yA');
 
-$hiddenMenuId=array();
-array_push($hiddenMenuId, 'a0Y70000002pSJLE');
-array_push($hiddenMenuId, 'a0Y70000008bdVoE');
+$allowedMenuId=array();
+array_push($allowedMenuId, 'a0Y70000002pSJLE');
+array_push($allowedMenuId, 'a0Y70000008bdVoE');
 //array_push($hiddenMenuId, 'a0Y70000008bdVoE');
 //array_push($hiddenMenuId, 'a0Y70000002okHLE');
 //array_push($hiddenMenuId, 'a0Y70000002pW9jE');

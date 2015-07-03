@@ -1,1 +1,0 @@
-05 00 * * * /Models/DownloadKeywords.php >> /home/hkalule/myjob.log 2>&1

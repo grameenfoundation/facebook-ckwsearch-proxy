@@ -1,7 +1,7 @@
 @echo on
 REM -----Facebook CKWSearch
 REM Copyright (c) 2015 AppLab, Grameen Foundation
-REM Cron job in WAMP
+REM Windows job in WAMP
 
 php -f  gfsearch/Models/DownloadImageId.php
 

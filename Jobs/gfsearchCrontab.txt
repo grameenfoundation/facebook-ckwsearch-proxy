@@ -1,0 +1,3 @@
+#==== job below updates gfsearch db used by FacebookckwSearchProxy ====
+MAILTO=hkalule@grameenfoundation.org
+07 * * * * /usr/bin/php /var/www/vhosts/default/htdocs/gfsearch/Models/DownloadKeywords.php | /bin/mail -s "gfsearch db update for FacebookckwSearchProxy" hkalule@grameenfoundation.org > /dev/null

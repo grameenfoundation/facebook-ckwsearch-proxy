@@ -43,7 +43,7 @@
                     if ($resultMenu) {
 
                         while ($menuObj = $resultMenu->fetch_object()) {
-                            if (in_array($menuObj->id, $hiddenMenuId)) {
+                            if (in_array($menuObj->id, $allowedMenuId)) {
                                 echo "</br>";
                                 echo '' . "<ul id='menu'>";
                                 echo "" . "<li ><a href='index.php?menuId=" . $menuObj->id . "' title='Next Page' class='SubMenu' >" . $menuObj->label . "</a></li><ul>";
@@ -105,7 +105,7 @@
                                 }
                             } elseif ($count == '0') {
                                 echo "" . "<ul id='menuItem'>";
-                                echo "" . "<li ><a href='finalDisplay.php?id=" . $subMenuObj->id . "&menuId=" . $menuId . "' title='Next Page' class='SubMenu' >" . $subMenuObj->label . "</a></li>";
+                                echo "" . "<li ><a href='end.php?id=" . $subMenuObj->id . "&menuId=" . $menuId . "' title='Next Page' class='SubMenu' >" . $subMenuObj->label . "</a></li>";
                                 $subContent = explode('Attribution:', $subMenuObj->content);
                                 echo "" . substrword($subContent[0], 0, 120) . "</ul> ";
                             }
