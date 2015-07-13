@@ -2,7 +2,7 @@
 /*
  * Copyright (c) 2015 AppLab, Grameen Foundation
  *
- *  Facebook MVP 
+ *  facebook-ckwsearch-proxy
  *  
  *  
  **/

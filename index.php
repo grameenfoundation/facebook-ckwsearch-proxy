@@ -1,3 +1,13 @@
+<!--
+/*
+ * Copyright (c) 2015 AppLab, Grameen Foundation
+ *
+ *  facebook-ckwsearch-proxy
+ *  
+ *  
+ **/
+-->
+
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
@@ -15,6 +25,26 @@
             include 'Models/connection.php';
             include 'Models/Config.php';
 
+            if (isset($_GET["menuId"])) {
+                $menuId = $_GET["menuId"];
+            } else {
+                if ($_SERVER[HTTP_HOST] == 'en.m.applab.org') {
+                        $menuId = 'a0Y70000008bdVoE';
+                        echo $_SERVER[HTTP_HOST];
+                 }elseif ($_SERVER[HTTP_HOST] == 'es.m.applab.org') {
+                        $menuId = 'a0Y70000002pSJLE';
+                        echo $_SERVER[HTTP_HOST];
+
+                }else {
+                        $menuId = "";
+                        }
+            }
+            if (isset($_GET["id"])) {
+                $id = $_GET["id"];
+            } else {
+                $id = "";
+            }
+
             function substrword($str, $begin, $length) {
                 if (($begin + $length) < strlen($str)) {
                     return substr($str, $begin, $length) . current(explode(' ', substr($str, $length))) . ' ...';
@@ -23,20 +53,10 @@
                 }
             }
 
-            if (isset($_GET["menuId"])) {
-                $menuId = $_GET["menuId"];
-            } else {
-                $menuId = "";
-            }
-            if (isset($_GET["id"])) {
-                $id = $_GET["id"];
-            } else {
-                $id = "";
-            }
             if ($connection) {
                 if ($menuId == "") {
-   
-		//select Ids from Menu
+
+                    //select Ids from Menu
                     $getMenu = ("select * from menu order by label asc");
                     $resultMenu = mysqli_query($connection, $getMenu);
 
@@ -50,8 +70,9 @@
                                 echo "" . "</ul>";
                             }
                         }
-                    }else{
-			echo 'no menus';	}
+                    } else {
+                        echo 'no menus';
+                    }
                 } elseif ($menuId != "") {
                     if ($id == "") {
                         $subMenuQuery = ("select * from menuitem where parentid='$id' and menuid='$menuId' order by position asc, label asc");
@@ -109,7 +130,7 @@
                                 $subContent = explode('Attribution:', $subMenuObj->content);
                                 echo "" . substrword($subContent[0], 0, 120) . "</ul> ";
                             }
-                        }   
+                        }
                     }
                 }
             } else {
