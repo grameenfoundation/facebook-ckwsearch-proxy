@@ -89,6 +89,7 @@
                     if ($id == "") {
 
                         //backButton Implementation
+                        echo "</br>";
                         echo ""."<div align='right'><a href='index.php'> << Back </a></div>";
 
                         $subMenuQuery = ("select * from menuitem where parentid='$id' and menuid='$menuId' order by position asc, label asc");
