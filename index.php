@@ -25,18 +25,20 @@
             include 'Models/connection.php';
             include 'Models/Config.php';
 
+
             if (isset($_GET["menuId"])) {
                 $menuId = $_GET["menuId"];
             } else {
                 if ($_SERVER[HTTP_HOST] == 'en.m.applab.org') {
                         $menuId = 'a0Y70000008bdVoE';
-                        echo $_SERVER[HTTP_HOST];
+                        
+
                  }elseif ($_SERVER[HTTP_HOST] == 'es.m.applab.org') {
                         $menuId = 'a0Y70000002pSJLE';
-                        echo $_SERVER[HTTP_HOST];
 
                 }else {
                         $menuId = "";
+                        
                         }
             }
             if (isset($_GET["id"])) {
@@ -44,6 +46,15 @@
             } else {
                 $id = "";
             }
+
+            //variable for Back button
+            if (isset($_GET["previous"])) {
+                $previous = $_GET["previous"];
+            } else {
+                $previous = "";
+            }
+
+            $referer = $_SERVER['HTTP_REFERER'];
 
             function substrword($str, $begin, $length) {
                 if (($begin + $length) < strlen($str)) {
@@ -74,18 +85,23 @@
                         echo 'no menus';
                     }
                 } elseif ($menuId != "") {
+
                     if ($id == "") {
+
+                        //backButton Implementation
+                        echo ""."<div align='right'><a href='index.php'> << Back </a></div>";
+
                         $subMenuQuery = ("select * from menuitem where parentid='$id' and menuid='$menuId' order by position asc, label asc");
                         $subMenuResult = mysqli_query($connection, $subMenuQuery)
                                 or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
-                        echo '' . "</br>";
+
                         while ($subMenuObj = $subMenuResult->fetch_object()) {
 
                             //check if Id is not in hidden MenuItem arraylist
                             if (!in_array($subMenuObj->id, $hiddenMenuItemId)) {
-
+                                    
                                 if (strpos($subMenuObj->content, 'No Content') !== FALSE) {
-                                    //$subMenuObj->content = '';
+                                    
                                     echo "" . "<ul id='menuItem'>";
                                     echo "" . "<li ><a href='index.php?id=" . $subMenuObj->id . "&menuId=" . $menuId . "' title='Next Page' class='SubMenu' >" . $subMenuObj->label . "</a></li>";
                                     echo "" . "</ul> ";
@@ -98,14 +114,22 @@
                             }
                         }
                     } elseif ($id != "") {
-
+                        
                         $subMenuQuery = ("select * from menuitem where parentid='$id' and menuid='$menuId' order by position asc, label asc");
                         $subMenuResult = mysqli_query($connection, $subMenuQuery)
                                 or die('Invalid query for selecting getMenuItemLabel: ' . mysqli_error($connection));
+                        
+                        //Back Button implementation
+                        $parentIdQuery = ("select parentid from menuitem where id='$id' and menuid='$menuId' order by position asc, label asc");
+                        $parentIdResult = mysqli_query($connection, $parentIdQuery)
+                                or die('Invalid query for selecting parentID: ' . mysqli_error($connection));
+                        $parentIdObj = $parentIdResult->fetch_object();
+                        $previous=$parentIdObj->parentid;
                         echo '' . "</br>";
+                        echo ""."<div align='right'><a href='index.php?id=" . $previous . "&menuId=" . $menuId . "' title='Back Page' class='SubMenu' ><< Back</a></div>";
 
                         while ($subMenuObj = $subMenuResult->fetch_object()) {
-
+                            
                             $query = ("select count(id) as no from menuitem where parentid='$subMenuObj->id'");
                             $result = mysqli_query($connection, $query)
                                     or die('Invalid query for selecting parentId: ' . mysqli_error($connection));
@@ -139,6 +163,7 @@
             }
             ?>
         </div>
+        </br>
         <small>Copyright (c) 2015 Grameen Foundation </small>
     <body/>
 

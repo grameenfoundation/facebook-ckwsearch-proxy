@@ -28,10 +28,10 @@ array_push($hiddenMenuItemId, 'a0r70000000Um3yA');
 $allowedMenuId=array();
 array_push($allowedMenuId, 'a0Y70000002pSJLE');
 array_push($allowedMenuId, 'a0Y70000008bdVoE');
-//array_push($hiddenMenuId, 'a0Y70000008bdVoE');
-//array_push($hiddenMenuId, 'a0Y70000002okHLE');
-//array_push($hiddenMenuId, 'a0Y70000002pW9jE');
-//array_push($hiddenMenuId, 'a0Y700000067FzyE');
+//array_push($allowedMenuId, 'a0Y70000008bdVoE');
+//array_push($allowedMenuId, 'a0Y70000002okHLE');
+//array_push($allowedMenuId, 'a0Y70000002pW9jE');
+//array_push($allowedMenuId, 'a0Y700000067FzyE');
 
 
 

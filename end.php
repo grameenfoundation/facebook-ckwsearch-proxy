@@ -36,6 +36,10 @@
                 $id = "";
             }
 
+            $referer = $_SERVER['HTTP_REFERER'];
+            
+            echo ""."<div align='right'><a href='$referer'> << Back </a></div>";
+
             $queryLastChild = ("select content from menuitem where menuid='$menuId' and id='$id'");
             $resultLastChild = mysqli_query($connection, $queryLastChild)
                     or die('Invalid query for selecting last level content ' . mysqli_error($connection));
