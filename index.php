@@ -89,8 +89,15 @@
                     if ($id == "") {
 
                         //backButton Implementation
-                        echo "</br>";
-                        echo ""."<div align='right'><a href='index.php'> << Back </a></div>";
+                        if ($_SERVER[HTTP_HOST] == 'en.m.applab.org' || $_SERVER[HTTP_HOST] == 'es.m.applab.org' ){
+
+
+                        }else{
+                            //backButton display
+                            echo "</br>";
+                            echo ""."<div align='right'><a href='index.php'> << Back </a></div>";
+
+                        }
 
                         $subMenuQuery = ("select * from menuitem where parentid='$id' and menuid='$menuId' order by position asc, label asc");
                         $subMenuResult = mysqli_query($connection, $subMenuQuery)
