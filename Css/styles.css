@@ -2,7 +2,7 @@
 /*
  * Copyright (c) 2015 AppLab, Grameen Foundation
  *
- *  Facebook MVP 
+ *  facebook-ckwsearch-proxy
  *  
  *  
  **/
@@ -15,20 +15,13 @@
 }
 
 html {
-    //background: #ddd;
-    //background: #eee;
     background: #FFFFFF;
 }
 body {
-
-    //border-radius: 1em 1em;
-    margin: 1em 10%;   
-    //padding: 1em 1em;
+    margin: 1em 3%;
     font: 80%/1.4 tahoma, arial, helvetica, lucida sans, sans-serif;
-    background-repeat: initial;
-    background: #FFFFFF; // #eee;
-    // background-color: #cccccc;
     position: absolute;
+
 }
 #head {
     margin-bottom: 1.8em;
@@ -57,9 +50,8 @@ h2 {
 ul {
     list-style: none;
     padding: 1% 0%;
-    // border-bottom: 1px solid ;
     border-top: 1px solid;
-    border-color: #999;
+    border-color: #DADBDA;
 }
 #head ul li, dl ul li, #foot li {
     list-style: none;
@@ -68,7 +60,8 @@ ul {
     padding: 0 0.4em;
 }
 ul.aliases, ul.projects, ul.tools {
-    list-style: none;
+    list-style: square;
+    border-top: 1px solid;
     line-height: 24px;
 }
 ul.aliases a, ul.projects a, ul.tools a {
@@ -128,4 +121,24 @@ a:hover {
 }
 .left {float:left;}
 .right {float:right;}
+
+#block_container
+{
+    /*text-align:center;*/
+     /*display:inline;*/
+}
+#bloc1
+{
+
+    text-align:left;
+    display:inline;
+}
+#bloc2
+{
+    
+    float: right;
+    display:inline;
+    text-align:right;
+
+}
 

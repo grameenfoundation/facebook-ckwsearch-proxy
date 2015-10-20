@@ -1,3 +1,12 @@
+<!--
+/*
+ * Copyright (c) 2015 AppLab, Grameen Foundation
+ *
+ *  facebook-ckwsearch-proxy
+ *  
+ *  
+ **/
+-->
 <?php
 
 /* 
@@ -13,11 +22,17 @@ $ImagesLastUpdatedDate='2015-02-01-01';
 
 $Url='http://grameenfoundation.force.com/ckwsearch/SearchGetRequest?data=%7B%0A%22imei%22%3A%20%22$imei%22%2C%20%22keywordsVersion%22%3A%22$keywordsVersion%2000%3A00%3A00%22%2C%0A%22ImagesLastUpdatedDate%22%3A%22$ImagesLastUpdatedDate%2000%3A00%3A00%22%0A%7D%0A&method=keywords';
 
-$hiddenMenuItemId=[];
+$hiddenMenuItemId=array();
 array_push($hiddenMenuItemId, 'a0r70000000Um3yA');
 
-$hiddenMenuId=[];
-//array_push($hiddenMenuId, 'a0Y70000008bdVoE');
+$allowedMenuId=array();
+array_push($allowedMenuId, 'a0Y70000002pSJLE');
+array_push($allowedMenuId, 'a0Y70000008bdVoE');
+//array_push($allowedMenuId, 'a0Y70000008bdVoE');
+//array_push($allowedMenuId, 'a0Y70000002okHLE');
+//array_push($allowedMenuId, 'a0Y70000002pW9jE');
+//array_push($allowedMenuId, 'a0Y700000067FzyE');
+
 
 
 

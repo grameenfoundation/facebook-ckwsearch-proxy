@@ -3,7 +3,7 @@
 /*
  * Copyright (c) 2015 AppLab, Grameen Foundation
  *
- *  Facebook MVP 
+ *  facebook-ckwsearch-proxy
  *  
  *  
  **/
@@ -18,6 +18,28 @@
 
 include 'TableCreations.php';
 include 'Config.php';
+include 'JSON.php';
+
+if (!function_exists('json_decode')) {
+    function json_decode($content, $assoc=false) {
+        require_once 'JSON.php';
+        if ($assoc) {
+            $json = new Services_JSON(SERVICES_JSON_LOOSE_TYPE);
+        }
+        else {
+            $json = new Services_JSON;
+        }
+        return $json->decode($content);
+    }
+}
+
+if (!function_exists('json_encode')) {
+    function json_encode($content) {
+        require_once '/JSON.php';
+        $json = new Services_JSON;
+        return $json->encode($content);
+    }
+}  
 
 class Keywords {
     
@@ -40,11 +62,11 @@ $resultMessage = $downloadKeywords->{'resultMessage'};
 $resultCode = $downloadKeywords->{'resultCode'};
 
 //get menus
-$menus = [];
+$menus = array();
 $menus = $downloadKeywords->{'menus'};
 
 //getmenuItems
-$menuItems = [];
+$menuItems = array();
 $menuItems = $downloadKeywords->{'menuItems'};
 
 if ($resultCode == '0') {
@@ -75,7 +97,7 @@ if ($resultCode == '0') {
             $menuid = mysqli_real_escape_string($connection, $value->{'menu_id'});
             $content = mysqli_real_escape_string($connection, $value->{'content'});
 
-            $query4 = ("insert IGNORE into menu_item (id,label,menu_id,parent_id,position,content)values('$menuItemId','$menuItemLabel','$menuid','$parentid','$position','$content')");
+            $query4 = ("insert IGNORE into menuitem (id,label,menuid,parentid,position,content)values('$menuItemId','$menuItemLabel','$menuid','$parentid','$position','$content')");
             $result4 = mysqli_query($connection, $query4);
 
             if ($result4) {

@@ -2,7 +2,7 @@
 /*
  * Copyright (c) 2015 AppLab, Grameen Foundation
  *
- *  Facebook MVP 
+ *  facebook-ckwsearch-proxy
  *  
  *  
  **/
@@ -19,5 +19,6 @@ $connection = mysqli_connect($host, $uname, $pass)
 $selectdb = mysqli_select_db($connection, $database) or die("Database could not be selected");
 $result = mysqli_select_db($connection, $database)
         or die("database cannot be selected <br>");
+?>
 
 
