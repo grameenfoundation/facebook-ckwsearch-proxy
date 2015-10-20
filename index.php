@@ -16,7 +16,7 @@
     <body>
         <div>
             <div>
-                <img class="logo" typeof="foaf:Image" src="images/image2.png" > 
+                <img class="logo" typeof="foaf:Image" src="images/grameen.png" > 
             </div>
         </div>
         <div>
@@ -47,7 +47,7 @@
                 $id = "";
             }
 
-            //variable for Back button
+            // Back button
             if (isset($_GET["previous"])) {
                 $previous = $_GET["previous"];
             } else {
@@ -90,12 +90,12 @@
 
                         //backButton Implementation
                         if ($_SERVER[HTTP_HOST] == 'en.m.applab.org' || $_SERVER[HTTP_HOST] == 'es.m.applab.org' ){
-
+                            //do nothing
 
                         }else{
                             //backButton display
                             echo "</br>";
-                            echo ""."<div align='right'><a href='index.php'> << Back </a></div>";
+                            echo ""."<div id='block_container'><div id='bloc1'><a href='index.php'> << Home </a></div></div>";
 
                         }
 
@@ -134,7 +134,8 @@
                         $parentIdObj = $parentIdResult->fetch_object();
                         $previous=$parentIdObj->parentid;
                         echo '' . "</br>";
-                        echo ""."<div align='right'><a href='index.php?id=" . $previous . "&menuId=" . $menuId . "' title='Back Page' class='SubMenu' ><< Back</a></div>";
+                        //check for en and es
+                        echo "<div id='block_container'><div id='bloc1'><a href='index.php'> << Home </a></div><div id='bloc2'><a href='index.php?id=" . $previous . "&menuId=" . $menuId . "' title='Back Page' class='SubMenu' ><< Back</a></div></div>";
 
                         while ($subMenuObj = $subMenuResult->fetch_object()) {
                             
@@ -172,7 +173,8 @@
             ?>
         </div>
         </br>
-        <small>Copyright (c) 2015 Grameen Foundation </small>
+        
+        <font size="1" style="arial">Copyright (c) 2015 Grameen Foundation </font>
     <body/>
 
     <html/>

@@ -11,7 +11,7 @@
 <?php
 $host = "localhost";
 $uname = "root";
-$pass = "ckw@pps";
+$pass = "";
 $database = "gfsearch";
 
 $connection = mysqli_connect($host, $uname, $pass)

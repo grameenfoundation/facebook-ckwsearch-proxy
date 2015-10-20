@@ -16,7 +16,7 @@
     <body>
         <div>
             <div>
-                <img class="logo" typeof="foaf:Image" src="images/image2.png" > 
+                <img class="logo" typeof="foaf:Image" src="images/grameen.png" > 
             </div>
         </div>
         </br>
@@ -38,7 +38,7 @@
 
             $referer = $_SERVER['HTTP_REFERER'];
             
-            echo ""."<div align='right'><a href='$referer'> << Back </a></div>";
+            echo "<div id='block_container'><div id='bloc1'><a href='index.php'> << Home </a></div>"."<div id='bloc2'><a href='$referer'> << Back </a></div></div>";
 
             $queryLastChild = ("select content from menuitem where menuid='$menuId' and id='$id'");
             $resultLastChild = mysqli_query($connection, $queryLastChild)
